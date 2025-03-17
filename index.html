@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle Simulation: Gladiators Fight</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+
+        .container {
+
+            text-align: center;
+        }
+
+        p {
+            margin-top: 5px;
+            transition: ease-in-out 1s all;
+        }
+
+        button {
+            margin: 10px 0 50px;
+            text-align: center;
+            cursor: pointer;
+            background-color: rgb(146, 146, 211);
+            padding: 10px 30px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            text-transform: capitalize;
+            color: white;
+        }
+
+        button:disabled {
+            opacity: 69%;
+        }
+
+        section {
+            padding: 50px 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <main>
+        <section id="display-game">
+
+            <h3></h3>
+
+            <button>
+                start game
+            </button>
+
+            <div class="container">
+
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
