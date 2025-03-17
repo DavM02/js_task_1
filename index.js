@@ -97,7 +97,7 @@ class Battle {
                 this.displayActionOnUi(`[${attacker.name} x ${attacker.health}] hits [${opponent.name} x ${opponent.health}] with power ${attacker.power}`);
                 this.reduceHealthWithPower(opponentIndex, attacker.power);
                 resolve();
-            }, attackInterval * 600);
+            }, attackInterval * 200);
         });
     }
 
@@ -171,7 +171,7 @@ class Battle {
         setTimeout(() => {
             p.style.opacity = 0;
             p.addEventListener("transitionend", () => p.remove());
-        }, 6000);
+        }, 5000);
     }
 
     startBattle() {
