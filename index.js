@@ -97,7 +97,7 @@ class Battle {
                 this.displayActionOnUi(`[${attacker.name} x ${attacker.health}] hits [${opponent.name} x ${opponent.health}] with power ${attacker.power}`);
                 this.reduceHealthWithPower(opponentIndex, attacker.power);
                 resolve();
-            }, attackInterval * 200);
+            }, attackInterval * 400);
         });
     }
 
