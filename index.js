@@ -171,7 +171,7 @@ class Battle {
         setTimeout(() => {
             p.style.opacity = 0;
             p.addEventListener("transitionend", () => p.remove());
-        }, 10000);
+        }, 6000);
     }
 
     startBattle() {
