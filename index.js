@@ -20,25 +20,29 @@ class Battle {
     }
 
     createGladiator() {
+        const health = this.generateRandomNumber(80, 100);
+        const speed = this.generateRandomFloat(1, 5, 0.001);
+
         return {
-            health: this.generateRandomNumber(80, 100),
+            health: health,
             power: this.generateRandomFloat(2, 5, 0.1),
-            speed: this.generateRandomFloat(1, 5, 0.001),
+            speed: speed,
             name: this.generateRandomName(),
+            initialHealth: health,   
+            initialSpeed: speed     
         };
     }
-
     createGladiators() {
         const gladiatorsCount = this.generateRandomNumber(2, 8);
         this.gladiators = Array.from({ length: gladiatorsCount }, () => this.createGladiator());
     }
 
     // Methods for battle
-    reduceHealthWithPower(id, power, speed) {
+    reduceHealthWithPower(id, power) {
         if (!this.gladiators[id]) return;
 
         const opponent = this.gladiators[id];
-        const initialHealth = opponent.health;
+        
         opponent.health = Math.round(opponent.health - power);
 
         if (opponent.health <= 0) {
@@ -49,13 +53,14 @@ class Battle {
         if (opponent.health <= 30) {
             this.tripleSpeed(id);
         }
-        this.adjustSpeed(id, speed, opponent.health, initialHealth);
+        this.adjustSpeed(id);
     }
 
 
-    adjustSpeed(id, speed, newHealth, initialHealth) {
+    adjustSpeed(id) {
         const opponent = this.gladiators[id];
-        opponent.speed = speed * (newHealth / initialHealth);
+        const { initialSpeed, health, initialHealth } = opponent
+        opponent.speed = initialSpeed * (health / initialHealth);
     }
 
     tripleSpeed(id) {
@@ -90,9 +95,9 @@ class Battle {
                 if (!this.gladiators[id] || !this.gladiators[opponentIndex]) return resolve();
 
                 this.displayActionOnUi(`[${attacker.name} x ${attacker.health}] hits [${opponent.name} x ${opponent.health}] with power ${attacker.power}`);
-                this.reduceHealthWithPower(opponentIndex, attacker.power, opponent.speed);
+                this.reduceHealthWithPower(opponentIndex, attacker.power);
                 resolve();
-            }, attackInterval * 1000);
+            }, attackInterval * 600);
         });
     }
 
@@ -206,3 +211,5 @@ const createBattle = new Battle();
 createBattle.startBattle()
 createBattle.updateOnWindowVisibilityChange()
 
+
+ 
