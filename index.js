@@ -74,8 +74,7 @@ class Battle {
     }
 
     makeAttack(id) {
-        if (!this.gladiators[id]) return;
-
+        
         const attacker = this.gladiators[id];
         if (!attacker) return;
 
